@@ -1,24 +1,16 @@
-import 'dart:async';
-import 'dart:convert';
-import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'mobimColors.dart';
+import 'package:giri/utils/colors.dart';
 
-enum ToastMessageType { ERROR, SUCCESS, WARNING }
+enum ToastMessageType { error, success, warning }
 
-mixin MobimWidgetFunctions {
+mixin GiriMixin {
   void onLoading(context) {
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return PopScope(
-          canPop: false,
-          child: const Center(child: CircularProgressIndicator()));
+        return const PopScope(canPop: false, child: Center(child: CircularProgressIndicator()));
       },
     );
   }
@@ -29,12 +21,12 @@ mixin MobimWidgetFunctions {
 
   Color _toastMessageTypeColor(ToastMessageType type) {
     switch (type) {
-      case ToastMessageType.SUCCESS:
-        return MobimColors.success;
-      case ToastMessageType.WARNING:
-        return MobimColors.warning;
-      case ToastMessageType.ERROR:
-        return MobimColors.error;
+      case ToastMessageType.success:
+        return GiriColors.success;
+      case ToastMessageType.warning:
+        return GiriColors.warning;
+      case ToastMessageType.error:
+        return GiriColors.error;
       default:
         return Colors.blue;
     }
@@ -42,11 +34,11 @@ mixin MobimWidgetFunctions {
 
   IconData? _toastMessageTypeIcon(ToastMessageType type) {
     switch (type) {
-      case ToastMessageType.SUCCESS:
+      case ToastMessageType.success:
         return Icons.done;
-      case ToastMessageType.WARNING:
+      case ToastMessageType.warning:
         return Icons.warning;
-      case ToastMessageType.ERROR:
+      case ToastMessageType.error:
         return Icons.error;
       default:
         return null;
@@ -67,7 +59,8 @@ mixin MobimWidgetFunctions {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Icon(_toastMessageTypeIcon(type),
+                Icon(
+                  _toastMessageTypeIcon(type),
                   color: Colors.white,
                 ),
                 const SizedBox(width: 12),

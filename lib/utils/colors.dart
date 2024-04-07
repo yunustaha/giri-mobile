@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-class MobimColors {
+class GiriColors {
   static const primary = Color(0xff404040);
   static const secondary = Color.fromARGB(255, 123, 122, 122);
   static const tertiary = Color(0xffee6568);
