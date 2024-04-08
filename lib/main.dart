@@ -6,7 +6,6 @@ import './screens/Home/index.dart';
 import './screens/Splash/index.dart';
 import 'screens/Login/SignIn/SignIn.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -14,8 +13,6 @@ class MyHttpOverrides extends HttpOverrides {
     return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 }
-
-GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,8 +40,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      builder: FToastBuilder(),
-      navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'Giri',
       theme: ThemeData(
