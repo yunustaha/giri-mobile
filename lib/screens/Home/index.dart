@@ -41,13 +41,12 @@ class HomeScreen extends StatelessWidget {
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: CupertinoColors.systemGrey,
         onPressed: (context) {
-          log('geldi');
           if (context != null) {
             showMaterialModalBottomSheet(
               context: context,
               builder: (context) => SingleChildScrollView(
                 controller: ModalScrollController.of(context),
-                child: Container(),
+                child: Container( height: 500, child: Text('deneme'), ),
               ),
             );
           }
