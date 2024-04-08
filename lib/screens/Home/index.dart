@@ -46,7 +46,38 @@ class HomeScreen extends StatelessWidget {
               context: context,
               builder: (context) => SingleChildScrollView(
                 controller: ModalScrollController.of(context),
-                child: Container( height: 500, child: Text('deneme'), ),
+                child: Container(
+                  height: 500,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: Stack(
+                      children: [
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            decoration: BoxDecoration(color: Color.fromARGB(255, 123, 122, 122), borderRadius: BorderRadius.all(Radius.circular(10))),
+                            width: 40,
+                            height: 7,
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                              FocusScope.of(context).unfocus();
+                            },
+                            child: Icon(
+                              Icons.close,
+                              color: Color.fromARGB(255, 123, 122, 122),
+                              size: 30,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             );
           }
