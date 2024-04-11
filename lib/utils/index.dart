@@ -1,17 +1,56 @@
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:giri/utils/colors.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 enum ToastMessageType { error, success, warning }
 
 mixin GiriMixin {
-  void onLoading(context) {
+  void onLoading(BuildContext context) {
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return const PopScope(canPop: false, child: Center(child: CircularProgressIndicator()));
       },
+    );
+  }
+
+  void openBottomSheet(BuildContext context, Widget body) {
+    showBarModalBottomSheet(
+      expand: true,
+      context: context,
+      barrierColor: Colors.black54,
+      builder: (context) => Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15, top: 15),
+            child: SizedBox(
+              height: 40,
+              child: Stack(
+                alignment: AlignmentDirectional.topCenter,
+                children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                        FocusScope.of(context).unfocus();
+                      },
+                      child: const Icon(
+                        Icons.close,
+                        color: Color.fromARGB(255, 91, 90, 90),
+                        size: 36,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          body
+        ],
+      ),
     );
   }
 
