@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import './screens/Home/index.dart';
+import 'package:giri/utils/keys.dart';
 import './screens/Splash/index.dart';
 import 'screens/Login/SignIn/SignIn.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: giriKeys.navKey,
       debugShowCheckedModeBanner: false,
       title: 'Giri',
       theme: ThemeData(
