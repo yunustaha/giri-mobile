@@ -8,7 +8,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:giri/screens/Login/SignIn/view/index.dart';
 import 'package:giri/services/Auth/index.dart';
 import 'package:giri/utils/index.dart';
-import 'package:giri/widgets/Logo.dart';
+import 'package:giri/widgets/logo.dart';
 
 class SignIn extends StatelessWidget with GiriMixin {
   SignIn({super.key});

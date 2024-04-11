@@ -6,7 +6,7 @@ import 'package:giri/utils/keys.dart';
 import 'package:giri/screens/base_screen.dart';
 import 'package:giri/custom_overlay.dart';
 import './screens/Splash/index.dart';
-import 'screens/Login/SignIn/SignIn.dart';
+import 'screens/Login/SignIn/sign_in.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class MyHttpOverrides extends HttpOverrides {
