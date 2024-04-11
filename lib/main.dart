@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import './screens/Home/index.dart';
 import 'package:giri/utils/keys.dart';
+import 'package:giri/screens/base_screen.dart';
 import './screens/Splash/index.dart';
 import 'screens/Login/SignIn/SignIn.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -60,8 +61,19 @@ class MyApp extends StatelessWidget {
       routes: {
         '/splash': (context) => const SplashScreen(),
         '/signIn': (context) => SignIn(),
-        '/home': (context) => HomeScreen(),
+        '/home': (context) => const BaseScreen(),
       },
     );
   }
+}
+
+@pragma("vm:entry-point")
+void overlayMain() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CustomOverlay(),
+    ),
+  );
 }
